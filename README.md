@@ -4,7 +4,7 @@
   <h3 align="center">P2P chat app using Holepunch</h3>
 </div>
 
-![Architecture Diagram](architecture.svg)
+![Architecture Diagram](architecture.png)
 
 
 ## About the App
