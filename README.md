@@ -4,7 +4,7 @@
   <h3 align="center">P2P Chat App using Holepunch</h3>
 </div>
 
-![Architecture Diagram](architecture.png)
+[![Architecture Diagram](architecture.png)](https://youtu.be/vt5fpE0bzSY)
 
 
 ## About the App
@@ -14,6 +14,8 @@ A Peer-to-Peer (P2P) chat application, built with Holepunch, Hyperbee, and Hyper
 At its core, Holepunch is used for bypassing network complexities, creating direct, decentralized connections between users. HyperDHT, a DHT (Distributed Hash Table) implementation, manages peer and socket connections effectively, while Hyperbee handles our data storage needs with efficiency and integrity.
 
 Our chat app ensures end-to-end security with robust encryption, protecting your conversations from prying eyes. The use of Hyperbee reduces the risk of data breaches, as it removes the need for central data storage.
+
+### Demo: https://youtu.be/vt5fpE0bzSY
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
