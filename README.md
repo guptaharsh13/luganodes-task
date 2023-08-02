@@ -1,7 +1,7 @@
 <a name="readme-top"></a>
 
 <div align="center">
-  <h3 align="center">P2P chat app using Holepunch</h3>
+  <h3 align="center">P2P Chat App using Holepunch</h3>
 </div>
 
 ![Architecture Diagram](architecture.png)
@@ -9,13 +9,14 @@
 
 ## About the App
 
-Luganodes SDE Hiring Task List
-
 A Peer-to-Peer (P2P) chat application, built with Holepunch, Hyperbee, and HyperDHT. This app enables secure and private communications without relying on a central server or third-party service.
 
 At its core, Holepunch is used for bypassing network complexities, creating direct, decentralized connections between users. HyperDHT, a DHT (Distributed Hash Table) implementation, manages peer and socket connections effectively, while Hyperbee handles our data storage needs with efficiency and integrity.
 
 Our chat app ensures end-to-end security with robust encryption, protecting your conversations from prying eyes. The use of Hyperbee reduces the risk of data breaches, as it removes the need for central data storage.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 
 ## Key Features
 
@@ -30,6 +31,8 @@ Our chat app ensures end-to-end security with robust encryption, protecting your
 - Hypercore
 - Hyperbee
 - HyperDHT
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Getting Started
 
@@ -51,6 +54,8 @@ npm i
 cd ../frontend
 npm i
   ```
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Usage
 
@@ -86,6 +91,8 @@ docker build -t chat-backend .
 docker run -it chat-backend
 ```
 
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
 ## Folder Structure
 ```
 .
@@ -103,6 +110,20 @@ docker run -it chat-backend
     ├── package-lock.json
     └── package.json
 ```
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+## Limitations
+
+The frontend of the application could not be developed using React due to an existing constraint. Our reliance on HyperDHT to handle P2P and encrypted socket connections poses a significant hurdle as it lacks browser support, thus making it incompatible with React-based implementation.
+
+## Possible Solution
+
+Contrary to initial impressions, the lack of browser compatibility with HyperDHT doesn't prevent us from crafting the frontend of our application in React. To overcome this, we need a connection handling mechanism that mirrors HyperDHT’s functionalities, yet is inherently designed for browser-based environments.
+
+By creating a solution that emulates HyperDHT's capabilities but is tailored for browser compatibility, we're able to build a robust P2P chat application. This application combines the sophisticated UI potential of React for frontend development with a browser-friendly implementation for secure, P2P connections, analogous to the service offered by HyperDHT.
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 ## Contributing
 
