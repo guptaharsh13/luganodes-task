@@ -4,7 +4,7 @@
   <h3 align="center">P2P Chat App using Holepunch</h3>
 </div>
 
-[![Architecture Diagram](architecture.png)](https://youtu.be/vt5fpE0bzSY)
+[![Architecture Diagram](architecture.png)](https://youtu.be/VYm6Clynw2g)
 
 
 ## About the App
@@ -15,7 +15,7 @@ At its core, Holepunch is used for bypassing network complexities, creating dire
 
 Our chat app ensures end-to-end security with robust encryption, protecting your conversations from prying eyes. The use of Hyperbee reduces the risk of data breaches, as it removes the need for central data storage.
 
-### Demo: https://youtu.be/vt5fpE0bzSY
+#### Demo: https://youtu.be/VYm6Clynw2g
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
