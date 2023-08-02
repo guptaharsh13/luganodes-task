@@ -1,25 +1,7 @@
-const { resolve } = require('path')
-require('dotenv').config({ path: resolve('../.env') })
-
 const RAM = require('random-access-memory')
 const Hypercore = require('hypercore')
 const Hyperbee = require('hyperbee')
 const DHT = require('hyperdht')
-
-const express = require('express')
-const app = express()
-const PORT = process.env.PORT || 3000
-
-const morgan = require('morgan')
-const cors = require('cors')
-
-app.use(morgan(process.env.NODE_ENV == "production" ? "common" : "dev"));
-app.use(express.json());
-app.use(cors());
-
-app.get('/', async (req, res) => {
-    res.json({ app: "P2P chat app using Holepunch 🚀" })
-})
 
 const connect = async () => {
     const core = new Hypercore((filename) => {
@@ -31,12 +13,6 @@ const connect = async () => {
     return db
 }
 
-const cas = (prev, next) => {
-    console.log("prev: ", prev.value)
-    console.log("next: ", next.value)
-    return true
-}
-
 const main = async () => {
     const db = await connect()
     const usernames = db.sub("usernames")
@@ -45,11 +21,6 @@ const main = async () => {
     const keyPair = DHT.keyPair()
     const { publicKey } = keyPair
     const remotePublicKey = publicKey.toString('hex')
-    app.get('/pubkey', async (req, res) => {
-        const { api_key } = req.headers
-        if (api_key !== process.env.API_KEY) return res.status(401).json({ error: "Unauthorized" })
-        res.json({ publicKey: remotePublicKey })
-    })
 
     const server = node.createServer()
     await server.listen(keyPair)
@@ -59,10 +30,9 @@ const main = async () => {
         process.env.NODE_ENV == "production" ? "production" : "development",
         "Environment"
     );
+    console.log("\n🔑 Public Key")
+    console.log(remotePublicKey)
 
-    app.listen(PORT, "0.0.0.0", () => {
-        console.log("🚀 App listening on port", PORT);
-    });
 
     server.on('connection', (socket) => {
         socket.on('data', async (buffer) => {
@@ -74,8 +44,10 @@ const main = async () => {
                 const pubKey = socket.remotePublicKey.toString('hex')
                 const { username } = data
                 if (!username) return
-                console.log(username, pubKey)
-                usernames.put(username, pubKey, cas)
+                console.log('\n✅ User added to database')
+                console.log('👤 Username:', username)
+                console.log('🔑 Public Key:', pubKey)
+                usernames.put(username, pubKey)
             }
 
             // connect to peer (peer discovery)
@@ -84,7 +56,6 @@ const main = async () => {
                 if (!username) return
                 const { value } = await usernames.get(username)
                 const pubKey = value.toString()
-                console.log(pubKey)
                 socket.write(JSON.stringify({ action: 'connect', data: { pubKey } }))
             }
         })
